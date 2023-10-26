@@ -3,6 +3,8 @@
 set -o xtrace -o nounset -o pipefail -o errexit
 
 make install LIBTOOL=${BUILD_PREFIX}/bin/libtool PREFIX=${PREFIX}
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 make test LIBTOOL=${BUILD_PREFIX}/bin/libtool PREFIX=${PREFIX}
+fi
 
 rm -f ${PREFIX}/lib/libvterm.a
