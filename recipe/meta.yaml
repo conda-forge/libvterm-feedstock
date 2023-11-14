@@ -11,23 +11,23 @@ source:
 
 build:
   number: 0
-  skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - make
+    - cmake  # [win]
+    - make  # [unix]
+    - ninja  # [win]
   host:
-    - libtool
+    - libtool  # [unix]
 
 test:
   commands:
-    - test -f $PREFIX/lib/libvterm${SHLIB_EXT}
+    - test -f $PREFIX/lib/libvterm${SHLIB_EXT}  # [unix]
 
 about:
   home: http://www.leonerd.org.uk/code/libvterm/
   license: MIT
-  license_family: MIT
   license_file: LICENSE
   summary: C99 library which implements VT220 or xterm terminal emulator
   dev_url: http://www.leonerd.org.uk/code/libvterm/
