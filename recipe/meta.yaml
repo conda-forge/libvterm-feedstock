@@ -1,5 +1,5 @@
 {% set name = "libvterm" %}
-{% set version = "0.3.2" %}
+{% set version = "0.3.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: http://www.leonerd.org.uk/code/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 91eb5088069f4e6edab69e14c4212f6da0192e65695956dc048016a0dab8bcf6
+  sha256: 09156f43dd2128bd347cbeebe50d9a571d32c64e0cf18d211197946aff7226e0
 
 build:
   number: 0
