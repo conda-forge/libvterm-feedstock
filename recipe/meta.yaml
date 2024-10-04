@@ -10,11 +10,14 @@ source:
   sha256: 09156f43dd2128bd347cbeebe50d9a571d32c64e0cf18d211197946aff7226e0
 
 build:
-  number: 0
+  number: 1
+  run_exports:
+  - {{ pin_subpackage('libvterm', max_pin='x.x') }}
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - cmake  # [win]
     - make  # [unix]
     - ninja  # [win]
@@ -34,4 +37,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - anjos
     - danielnachun
