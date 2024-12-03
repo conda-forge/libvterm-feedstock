@@ -1,0 +1,46 @@
+context:
+  version: 0.3.3
+
+package:
+  name: libvterm
+  version: ${{ version }}
+
+source:
+  url: http://www.leonerd.org.uk/code/libvterm/libvterm-${{ version }}.tar.gz
+  sha256: 09156f43dd2128bd347cbeebe50d9a571d32c64e0cf18d211197946aff7226e0
+
+build:
+  number: 1
+  - ${{ pin_subpackage('libvterm', upper_bound='x.x') }}
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - if: unix
+      then: make
+    - if: win
+      then:
+        - cmake
+        - ninja
+  host:
+    - if: unix
+      then: libtool
+  run_exports: run_exports
+
+tests:
+  - script:
+      - if: unix
+        then: test -f $PREFIX/lib/libvterm${SHLIB_EXT}
+
+about:
+  license: MIT
+  license_file: LICENSE
+  summary: C99 library which implements VT220 or xterm terminal emulator
+  homepage: http://www.leonerd.org.uk/code/libvterm/
+  repository: http://www.leonerd.org.uk/code/libvterm/
+
+extra:
+  recipe-maintainers:
+    - anjos
+    - danielnachun
