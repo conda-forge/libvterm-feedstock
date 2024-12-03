@@ -17,7 +17,9 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - if: unix
-      then: make
+      then:
+        - make
+        - perl
     - if: win
       then:
         - cmake
