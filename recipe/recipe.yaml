@@ -11,7 +11,6 @@ source:
 
 build:
   number: 1
-  - ${{ pin_subpackage('libvterm', upper_bound='x.x') }}
 
 requirements:
   build:
@@ -26,7 +25,7 @@ requirements:
   host:
     - if: unix
       then: libtool
-  run_exports: run_exports
+  run_exports: ${{ pin_subpackage('libvterm', upper_bound='x.x') }}
 
 tests:
   - script:
