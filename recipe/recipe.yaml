@@ -25,7 +25,8 @@ requirements:
   host:
     - if: unix
       then: libtool
-  run_exports: ${{ pin_subpackage('libvterm', upper_bound='x.x') }}
+  run_exports:
+    - ${{ pin_subpackage('libvterm', upper_bound='x.x') }}
 
 tests:
   - script:
